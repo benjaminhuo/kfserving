@@ -1,6 +1,6 @@
 
 # Image URL to use all building/pushing image targets
-IMG ?= kfserving-controller:latest
+IMG ?= benjaminhuo/kfserving-controller:latest
 
 all: test manager
 
@@ -22,7 +22,7 @@ install: manifests
 
 # Deploy controller in the configured Kubernetes cluster in ~/.kube/config
 deploy: manifests
-	kustomize build config/default | kubectl apply -f -
+	kubectl kustomize config/default > kfserving.yaml
 
 deploy-dev: manifests
 	./image_patch_dev.sh
@@ -55,7 +55,7 @@ endif
 	go generate ./pkg/... ./cmd/...
 
 # Build the docker image
-docker-build: test
+docker-build: generate fmt vet manifests
 	docker build . -t ${IMG}
 	@echo "updating kustomize image patch file for manager resource"
 

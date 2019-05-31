@@ -1,9 +1,9 @@
 apiVersion: "serving.kubeflow.org/v1alpha1"
 kind: "KFService"
 metadata:
-  name: "mnist-s3"
+  name: "kftest"
 spec:
   default:
     serviceAccountName: sa
     tensorflow:
-      modelUri: "s3://mnist/v1/export"
+      modelUri: "s3://model-zoo/saved_model_half_plus_two_cpu"

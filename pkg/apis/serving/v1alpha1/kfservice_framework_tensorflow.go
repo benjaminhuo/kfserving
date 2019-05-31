@@ -27,7 +27,7 @@ var (
 		"1.13.0",
 	}
 	InvalidTensorflowRuntimeVersionError = "RuntimeVersion must be one of " + strings.Join(AllowedTensorflowRuntimeVersions, ", ")
-	TensorflowServingImageName           = "tensorflow/serving"
+	TensorflowServingImageName           = "benjaminhuo/tf-serving"
 	DefaultTensorflowRuntimeVersion      = "latest"
 	TensorflowEntrypointCommand          = "/usr/bin/tensorflow_model_server"
 	TensorflowServingGRPCPort            = "9000"
